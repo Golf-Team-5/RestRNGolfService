@@ -35,7 +35,7 @@ namespace RestRNGolfService.Controllers
         [HttpPost]
         public void PostSwingDataAsDistance([FromBody] SwingData swingSpeed)
         {
-            int swingDistance = Convert.ToInt32(swingSpeed.SwingSpeed * 50);
+            int swingDistance = DistanceMeasurer.CalculateDistance(swingSpeed);
 
             SwingDistanceList.Add(swingDistance);
         }
