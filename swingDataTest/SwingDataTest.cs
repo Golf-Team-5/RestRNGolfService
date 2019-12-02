@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -46,6 +47,52 @@ namespace swingDataTest
             //Assert
             Assert.AreEqual(expectedDistance, swingDataList[0]);
         }
+
+        [TestMethod]
+        public void EmptySwingDataTest()
+        {
+            //Arrange
+            RestRNGolfService.Controllers.SwingDataController swingDataController = new SwingDataController();
+            SwingData emptySwingData = new SwingData();
+
+            //Act
+            try
+            {
+                swingDataController.PostSwingDataAsDistance(emptySwingData);
+
+                //Assert
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            {
+                
+            }
+
+        }
+
+        [TestMethod]
+        public void NegativeSwingDataTest()
+        {
+            //Arrange
+            RestRNGolfService.Controllers.SwingDataController swingDataController = new SwingDataController();
+            SwingData negativeSwingData = new SwingData(-8.0);
+
+            //Act
+            try
+            {
+                swingDataController.PostSwingDataAsDistance(negativeSwingData);
+                //Assert
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            {
+                
+                
+            }
+            
+        }
+
+
 
     }
 }

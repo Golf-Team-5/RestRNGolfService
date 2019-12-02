@@ -20,8 +20,8 @@
     "RestRNGolfService": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
-      "applicationUrl": "http://localhost:5000",
+      "launchUrl": "api/swingdata",
+      "applicationUrl": "http://localhost:52549",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
