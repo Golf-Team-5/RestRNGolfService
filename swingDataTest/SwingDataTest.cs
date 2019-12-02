@@ -63,7 +63,7 @@ namespace swingDataTest
                 //Assert
                 Assert.Fail();
             }
-            catch (ArgumentException e)
+            catch (Exception e)
             {
                 
             }
@@ -84,7 +84,7 @@ namespace swingDataTest
                 //Assert
                 Assert.Fail();
             }
-            catch (ArgumentException e)
+            catch (Exception e)
             {
                 
                 

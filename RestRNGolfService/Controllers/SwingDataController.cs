@@ -35,17 +35,15 @@ namespace RestRNGolfService.Controllers
         [HttpPost]
         public void PostSwingDataAsDistance([FromBody] SwingData swingSpeed)
         {
-            try
-            {
+            
                 int swingDistance = DistanceMeasurer.CalculateDistance(swingSpeed);
-                SwingDistanceList.Add(swingDistance);
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e);
-            } 
 
-           
+                if (swingDistance != 0)
+                {
+                    SwingDistanceList.Add(swingDistance);
+                }
+            
+             
         }
 
         // PUT: api/SwingData/5
