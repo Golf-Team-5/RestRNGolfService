@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RestRNGolfService.Model;
 
 namespace RestRNGolfService.Controllers
 {
@@ -18,9 +19,9 @@ namespace RestRNGolfService.Controllers
         
         // GET: api/SwingData
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<int> Get()
         {
-            return new string[] { "value1", "value2" };
+            return SwingDistanceList;
         }
 
         // GET: api/SwingData/5
@@ -32,11 +33,17 @@ namespace RestRNGolfService.Controllers
 
         // POST: api/SwingData
         [HttpPost]
-        public void PostSwingDataAsDistance([FromBody] double swingSpeed)
+        public void PostSwingDataAsDistance([FromBody] SwingData swingSpeed)
         {
-            int swingDistance = Convert.ToInt32(swingSpeed * 50);
+            
+                int swingDistance = DistanceMeasurer.CalculateDistance(swingSpeed);
 
-            SwingDistanceList.Add(swingDistance);
+                if (swingDistance != 0)
+                {
+                    SwingDistanceList.Add(swingDistance);
+                }
+            
+             
         }
 
         // PUT: api/SwingData/5
