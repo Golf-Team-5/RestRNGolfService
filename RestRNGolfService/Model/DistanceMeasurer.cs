@@ -14,12 +14,13 @@ namespace RestRNGolfService.Model
             return swingDistance;
         }
 
+
         //Idé til random scenario udvælger
         //public static int CalculateDistance2(SwingData swingData)
         //{
         //    int number = 5;
+              //random number generator that generates number
 
-            
         //    if (number == 9 || number == 10 )
         //    {
         //        //Scenario 1
