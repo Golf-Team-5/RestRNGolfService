@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestRNGolfService.Controllers;
+using RestRNGolfService.Model;
 
 namespace swingDataTest
 {
@@ -16,7 +17,7 @@ namespace swingDataTest
             List<int> swingDataList = SwingDataController.SwingDistanceList;
             swingDataList.Clear();
 
-            double fakeSwingData = 7.5;
+            SwingData fakeSwingData = new SwingData(7.8);
             int expectedLengthOfList = 1;
 
             //Act
