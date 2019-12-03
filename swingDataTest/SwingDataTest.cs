@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Net;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestRNGolfService.Controllers;
 using RestRNGolfService.Model;
+using System;
+using System.Collections.Generic;
 
 namespace swingDataTest
 {
@@ -23,7 +22,7 @@ namespace swingDataTest
 
             //Act
             swingDataController.PostSwingDataAsDistance(testSwingData);
-            
+
 
             //Assert
             Assert.AreEqual(expectedLengthOfList, swingDataList.Count);
@@ -39,7 +38,7 @@ namespace swingDataTest
             swingDataList.Clear();
 
             SwingData testSwingData = new SwingData(10.01);
-            int expectedDistance = 300;
+            int expectedDistance = 30;
 
             //Act
             swingDataController.PostSwingDataAsDistance(testSwingData);
@@ -65,7 +64,7 @@ namespace swingDataTest
             }
             catch (Exception e)
             {
-                
+
             }
 
         }
@@ -86,10 +85,10 @@ namespace swingDataTest
             }
             catch (Exception e)
             {
-                
-                
+
+
             }
-            
+
         }
 
 
