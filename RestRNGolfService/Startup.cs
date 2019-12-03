@@ -34,6 +34,7 @@ namespace RestRNGolfService
                 app.UseDeveloperExceptionPage();
             }
 
+
             app.UseCors(
                 options =>
                 {
