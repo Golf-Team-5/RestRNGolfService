@@ -39,7 +39,7 @@ namespace swingDataTest
             swingDataList.Clear();
 
             SwingData testSwingData = new SwingData(10.01);
-            int expectedDistance = 300;
+            int expectedDistance = 30;
 
             //Act
             swingDataController.PostSwingDataAsDistance(testSwingData);
