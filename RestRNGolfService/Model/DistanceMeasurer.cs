@@ -15,7 +15,7 @@ namespace RestRNGolfService.Model
             {
                 if (swingData.SwingSpeed != null && swingData.SwingSpeed > 0)
                 {
-                    int swingDistance = Convert.ToInt32(swingData.SwingSpeed * 30);
+                    int swingDistance = Convert.ToInt32(swingData.SwingSpeed * 3);
                     return swingDistance;
                 }
                 throw new ArgumentException();
