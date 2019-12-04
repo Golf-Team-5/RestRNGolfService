@@ -9,10 +9,11 @@ namespace SeleniumTestRNGolf
     {
         IWebDriver driver = new ChromeDriver("http://localhost:52549/api/swingdata");
 
-        
+
         [TestMethod]
         public void TestMethod1()
         {
+
 
         }
     }
