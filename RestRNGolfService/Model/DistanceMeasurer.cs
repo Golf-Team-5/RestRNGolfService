@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RestRNGolfService.Model
 {
@@ -19,12 +16,12 @@ namespace RestRNGolfService.Model
                     return swingDistance;
                 }
                 throw new ArgumentException();
-                
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                
+
             }
 
             return 0;
@@ -38,7 +35,7 @@ namespace RestRNGolfService.Model
         //public static int CalculateDistance2(SwingData swingData)
         //{
         //    int number = 5;
-              //random number generator that generates number
+        //random number generator that generates number
 
         //    if (number == 9 || number == 10 )
         //    {
@@ -58,7 +55,7 @@ namespace RestRNGolfService.Model
         //        int swingDistance = Convert.ToInt32(swingData.SwingSpeed * 30);
         //        return swingDistance;
         //    }
-          
+
         //}
 
 
