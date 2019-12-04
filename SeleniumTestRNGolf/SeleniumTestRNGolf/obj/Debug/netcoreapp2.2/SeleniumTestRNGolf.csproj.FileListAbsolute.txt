@@ -1,0 +1,11 @@
+C:\Users\Mark\source\repos\Golf-Team-5\RestRNGolfService\SeleniumTestRNGolf\SeleniumTestRNGolf\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Mark\source\repos\Golf-Team-5\RestRNGolfService\SeleniumTestRNGolf\SeleniumTestRNGolf\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Mark\source\repos\Golf-Team-5\RestRNGolfService\SeleniumTestRNGolf\SeleniumTestRNGolf\bin\Debug\netcoreapp2.2\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Mark\source\repos\Golf-Team-5\RestRNGolfService\SeleniumTestRNGolf\SeleniumTestRNGolf\bin\Debug\netcoreapp2.2\SeleniumTestRNGolf.deps.json
+C:\Users\Mark\source\repos\Golf-Team-5\RestRNGolfService\SeleniumTestRNGolf\SeleniumTestRNGolf\bin\Debug\netcoreapp2.2\SeleniumTestRNGolf.runtimeconfig.json
+C:\Users\Mark\source\repos\Golf-Team-5\RestRNGolfService\SeleniumTestRNGolf\SeleniumTestRNGolf\bin\Debug\netcoreapp2.2\SeleniumTestRNGolf.runtimeconfig.dev.json
+C:\Users\Mark\source\repos\Golf-Team-5\RestRNGolfService\SeleniumTestRNGolf\SeleniumTestRNGolf\bin\Debug\netcoreapp2.2\SeleniumTestRNGolf.dll
+C:\Users\Mark\source\repos\Golf-Team-5\RestRNGolfService\SeleniumTestRNGolf\SeleniumTestRNGolf\obj\Debug\netcoreapp2.2\SeleniumTestRNGolf.csprojAssemblyReference.cache
+C:\Users\Mark\source\repos\Golf-Team-5\RestRNGolfService\SeleniumTestRNGolf\SeleniumTestRNGolf\obj\Debug\netcoreapp2.2\SeleniumTestRNGolf.csproj.CoreCompileInputs.cache
+C:\Users\Mark\source\repos\Golf-Team-5\RestRNGolfService\SeleniumTestRNGolf\SeleniumTestRNGolf\obj\Debug\netcoreapp2.2\SeleniumTestRNGolf.AssemblyInfoInputs.cache
+C:\Users\Mark\source\repos\Golf-Team-5\RestRNGolfService\SeleniumTestRNGolf\SeleniumTestRNGolf\obj\Debug\netcoreapp2.2\SeleniumTestRNGolf.AssemblyInfo.cs
