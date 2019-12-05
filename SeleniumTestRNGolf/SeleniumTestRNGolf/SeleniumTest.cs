@@ -20,10 +20,14 @@ namespace SeleniumTestRNGolf
         string testPageUrl =  "http://localhost:3000/testpage.html";
 
         [TestMethod]
-        public void TestMethod1()
+        public void BallCanGetInHoleTest()
         {
             firefoxDriver.Navigate().GoToUrl(testPageUrl);
+            IWebElement testScoreBtn = firefoxDriver.FindElement(By.Id("scoreBtn"));
+            
 
+            testScoreBtn.Click();
+            
         }
 
 
