@@ -23,7 +23,27 @@ namespace RestRNGolfService.Controllers
         public IEnumerable<int> Get()
         {
 
+            ScoreCalculator.NoOfSwings++;
+
             return SwingDistanceList;
+        }
+
+        // GET: api/SwingData/GetScore 
+        [HttpGet]
+        [Route("GetScore")]
+        public int[] GetScore(int par)
+        {
+            ScoreCalculator.CalculateScore(par);
+            int[] scoreAndNoOfSwings = new []{ScoreCalculator.Score, ScoreCalculator.NoOfSwings};
+            return scoreAndNoOfSwings;
+        }
+
+        // PUT: api/SwingData/ResetSwings
+        [HttpPut]
+        [Route("ResetSwings")]
+        public void ResetSwings()
+        {
+            ScoreCalculator.NoOfSwings = 0;
         }
 
         // GET: api/SwingData/5

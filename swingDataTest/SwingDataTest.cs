@@ -9,6 +9,10 @@ namespace swingDataTest
     [TestClass]
     public class SwingDataTest
     {
+        //test relateret til Hitting The Ball
+
+        #region Swing Tests
+        
         [TestMethod]
         public void SwingDataPostToListTest()
         {
@@ -90,6 +94,103 @@ namespace swingDataTest
             }
 
         }
+
+        #endregion
+
+        //Tests relateret til Current Hit Score
+
+        #region Score Tests
+
+        [TestMethod]
+        public void ScoreCalculationTest()
+        {
+            //Arrange
+            SwingDataController swingDataController = new SwingDataController();
+            ScoreCalculator.NoOfSwings = 4;
+        
+            int expectedScore = 600;
+
+            //Act 
+            swingDataController.GetScore(3);
+
+            //Assert
+            Assert.AreEqual(expectedScore, ScoreCalculator.Score);
+            ScoreCalculator.Score = 0;
+            ScoreCalculator.NoOfSwings = 0;
+            
+        }
+
+        [TestMethod]
+        public void HoleInOneTest()
+        {
+            //Arrange
+            SwingDataController swingDataController = new SwingDataController();
+            ScoreCalculator.NoOfSwings = 1;
+
+            int expectedScore = 2000;
+
+            //Act 
+            swingDataController.GetScore(3);
+
+
+            //Assert
+            Assert.AreEqual(expectedScore, ScoreCalculator.Score);
+            ScoreCalculator.Score = 0;
+            ScoreCalculator.NoOfSwings = 0;
+        }
+
+        [TestMethod]
+        public void ParTest()
+        {
+            //Arrange
+            SwingDataController swingDataController = new SwingDataController();
+            ScoreCalculator.NoOfSwings = 3;
+
+            int expectedScore = 1000;
+
+            //Act 
+            swingDataController.GetScore(3);
+
+            //Assert
+            Assert.AreEqual(expectedScore, ScoreCalculator.Score);
+            ScoreCalculator.Score = 0;
+            ScoreCalculator.NoOfSwings = 0;
+        }
+
+        [TestMethod]
+        public void NoNegativeScoreTest()
+        {
+            //Arrange
+            SwingDataController swingDataController = new SwingDataController();
+            ScoreCalculator.NoOfSwings = 14;
+
+            int expectedScore = 0;
+
+            //Act 
+            swingDataController.GetScore(5);
+
+
+            //Assert
+            Assert.AreEqual(expectedScore, ScoreCalculator.Score);
+            ScoreCalculator.Score = 0;
+            ScoreCalculator.NoOfSwings = 0;
+        }
+
+        [TestMethod]
+        public void ResetSwingsTest()
+        {
+            //Arrange
+            SwingDataController swingDataController = new SwingDataController();
+            int expectedNoOfSwings = 0;
+            ScoreCalculator.NoOfSwings = 5;
+
+            //Act
+            swingDataController.ResetSwings();
+
+            //Assert
+            Assert.AreEqual(expectedNoOfSwings, ScoreCalculator.NoOfSwings);
+        }
+        #endregion
 
 
 
