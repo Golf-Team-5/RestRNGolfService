@@ -18,24 +18,13 @@ namespace RestRNGolfService.Controllers
         public static List<int> SwingDistanceList = new List<int>();
 
 
-
-
-
-        // GET: TEST - Slet mig igen
+        // GET: api/SwingData
         [HttpGet]
-        public int Get()
+        public IEnumerable<int> Get()
         {
 
-            return 200;
+            return SwingDistanceList;
         }
-
-        // GET: api/SwingData
-        //[HttpGet]
-        //public IEnumerable<int> Get()
-        //{
-            
-        //    return SwingDistanceList;
-        //}
 
         // GET: api/SwingData/5
         [HttpGet("{id}", Name = "Get")]
