@@ -14,15 +14,28 @@ namespace RestRNGolfService.Controllers
     {
 
         //liste af swing data fra UDPGolf og raspberry pi'en efter de er blev omdannet til afstand
-        
+
         public static List<int> SwingDistanceList = new List<int>();
-        
-        // GET: api/SwingData
+
+
+
+
+
+        // GET: TEST - Slet mig igen
         [HttpGet]
-        public IEnumerable<int> Get()
+        public int Get()
         {
-            return SwingDistanceList;
+
+            return 200;
         }
+
+        // GET: api/SwingData
+        //[HttpGet]
+        //public IEnumerable<int> Get()
+        //{
+            
+        //    return SwingDistanceList;
+        //}
 
         // GET: api/SwingData/5
         [HttpGet("{id}", Name = "Get")]
