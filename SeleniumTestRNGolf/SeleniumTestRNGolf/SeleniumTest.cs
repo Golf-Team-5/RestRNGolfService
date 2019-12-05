@@ -23,6 +23,7 @@ namespace SeleniumTestRNGolf
             chromeDriver.Quit();
         }
 
+
         [TestMethod]
         public void TestMethod2()
         {
