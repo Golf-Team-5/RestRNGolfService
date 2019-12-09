@@ -1,9 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 
 namespace SeleniumTestRNGolf
@@ -20,7 +18,7 @@ namespace SeleniumTestRNGolf
         IWebDriver firefoxDriver = new FirefoxDriver(AppContext.BaseDirectory);
         //IWebDriver chromeDriver = new ChromeDriver(AppContext.BaseDirectory);
 
-        string testPageUrl =  "http://localhost:3000/testpage.html";
+        string testPageUrl = "http://localhost:3000/testpage.html";
 
 
         [TestMethod]
@@ -32,10 +30,10 @@ namespace SeleniumTestRNGolf
 
             firefoxDriver.Navigate().GoToUrl(testPageUrl);
             IWebElement testScoreBtn = firefoxDriver.FindElement(By.Id("scoreBtn"));
-            
+
 
             testScoreBtn.Click();
-            
+
 
         }
 
@@ -50,41 +48,32 @@ namespace SeleniumTestRNGolf
         }
 
         [TestMethod]
-        public void TestMethod3()
+        public void ReturnHitvalueIsCorrect()
         {
-            firefoxDriver.Navigate().GoToUrl("http://localhost:3000/testpage.html");
-            
+            firefoxDriver.Navigate().GoToUrl("http://localhost:3000/playerPage.htm");
 
-            //string testCourseLength = "1000";
-            string testHit = "200";
 
-            Thread.Sleep(500);
-            // Tager fat i to input elementer på test html siden via deres id
-           // IWebElement courseLength = firefoxDriver.FindElement(By.Id("course-length"));
-            IWebElement golfHit = firefoxDriver.FindElement(By.Id("hit"));
-            // Resulatet af metodekald vises her
-            IWebElement result = firefoxDriver.FindElement(By.Id("resultat-af-et-slag"));
+            // udskriver det sidste slags længde
+            IWebElement result = firefoxDriver.FindElement(By.Id("current-hit"));
+
             // Knap der kalder metoden
-            IWebElement PositionCalled = firefoxDriver.FindElement(By.Id("PositionButton"));
+            IWebElement PositionCalled = firefoxDriver.FindElement(By.Id("ScoreBtn"));
 
-          //  courseLength.Clear();
-          //  courseLength.SendKeys(testCourseLength);
-            Thread.Sleep(1000);
-            golfHit.Clear();
-            golfHit.SendKeys(testHit);
-            Thread.Sleep(1000);
-
+            // simulerer et click på Tag næste sving knappen
             PositionCalled.Click();
-            Thread.Sleep(1000);
-            
+            Thread.Sleep(200);
+
+            // tager resultet fra current-hit og laver den om til en int
             int methodResult = Int32.Parse(result.Text);
 
-            int actualValue = 800;
+            // forvente værdi
+            int actualValue = 200;
 
             //assert
-            Assert.AreEqual(actualValue,methodResult);
+            // her testes om værdierne er ens
+            Assert.AreEqual(actualValue, methodResult);
 
-            //firefoxDriver.Quit();
+            firefoxDriver.Quit();
         }
     }
 }
