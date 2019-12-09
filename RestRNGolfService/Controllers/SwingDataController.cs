@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RestRNGolfService.Model;
+using System.Collections.Generic;
 
 namespace RestRNGolfService.Controllers
 {
@@ -15,7 +11,10 @@ namespace RestRNGolfService.Controllers
 
         //liste af swing data fra UDPGolf og raspberry pi'en efter de er blev omdannet til afstand
 
-        public static List<int> SwingDistanceList = new List<int>();
+        public static List<int> SwingDistanceList = new List<int>
+        {
+            200
+        };
 
 
         // GET: api/SwingData
@@ -34,7 +33,7 @@ namespace RestRNGolfService.Controllers
         public int[] GetScore(int par)
         {
             ScoreCalculator.CalculateScore(par);
-            int[] scoreAndNoOfSwings = new []{ScoreCalculator.Score, ScoreCalculator.NoOfSwings};
+            int[] scoreAndNoOfSwings = new[] { ScoreCalculator.Score, ScoreCalculator.NoOfSwings };
             return scoreAndNoOfSwings;
         }
 
@@ -57,15 +56,15 @@ namespace RestRNGolfService.Controllers
         [HttpPost]
         public void PostSwingDataAsDistance([FromBody] SwingData swingSpeed)
         {
-            
-                int swingDistance = DistanceMeasurer.CalculateDistance(swingSpeed);
 
-                if (swingDistance != 0)
-                {
-                    SwingDistanceList.Add(swingDistance);
-                }
-            
-             
+            int swingDistance = DistanceMeasurer.CalculateDistance(swingSpeed);
+
+            if (swingDistance != 0)
+            {
+                SwingDistanceList.Add(swingDistance);
+            }
+
+
         }
 
         // PUT: api/SwingData/5
