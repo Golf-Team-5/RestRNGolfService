@@ -34,7 +34,7 @@ namespace RestRNGolfService.Model
             {
                 return Score += 1000;
             }
-            if (NoOfSwings <= 10)
+            if (NoOfSwings <= 10 && NoOfSwings > par)
             {
                 return Score += 1000 - (100 * NoOfSwings);
             }

@@ -149,7 +149,7 @@ namespace swingDataTest
             int expectedScore = 1000;
 
             //Act 
-            swingDataController.GetScore(3);
+            swingDataController.GetScore(4);
 
             //Assert
             Assert.AreEqual(expectedScore, ScoreCalculator.Score);

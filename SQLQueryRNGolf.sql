@@ -1,0 +1,8 @@
+﻿--CREATE DATABASE RNGolf_db
+
+CREATE TABLE Player(
+	PlayerId INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	PlayerName NVARCHAR(3) NOT NULL,
+	PlayerSwings INT NOT NULL,
+	PlayerScore INT NOT NULL
+	)
