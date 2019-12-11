@@ -13,7 +13,7 @@ namespace RestRNGolfService.Controllers
 
         public static List<int> SwingDistanceList = new List<int>
         {
-            200
+            800
         };
 
 
@@ -30,10 +30,10 @@ namespace RestRNGolfService.Controllers
         // GET: api/SwingData/GetScore 
         [HttpGet]
         [Route("GetScore")]
-        public int[] GetScore(int par)
+        public int GetScore(int par, int hits)
         {
-            ScoreCalculator.CalculateScore(par);
-            int[] scoreAndNoOfSwings = new[] { ScoreCalculator.Score, ScoreCalculator.NoOfSwings };
+            ScoreCalculator.CalculateScore(par, hits);
+            int scoreAndNoOfSwings = ScoreCalculator.Score;
             return scoreAndNoOfSwings;
         }
 
