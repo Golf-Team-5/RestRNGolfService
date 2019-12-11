@@ -14,22 +14,22 @@ namespace swingDataTest
         #region Swing Tests
         
         [TestMethod]
-        public void SwingDataPostToListTest()
+        public void SwingDataPostToVariable()
         {
             //Arrange
             RestRNGolfService.Controllers.SwingDataController swingDataController = new SwingDataController();
-            List<int> swingDataList = SwingDataController.SwingDistanceList;
-            swingDataList.Clear();
+            int swingData;
+            
 
             SwingData testSwingData = new SwingData(7.8);
-            int expectedLengthOfList = 1;
+            int expectedValueOfVariable = 23;
 
             //Act
             swingDataController.PostSwingDataAsDistance(testSwingData);
-
+            swingData = SwingDataController.FinalSwingDistance;
 
             //Assert
-            Assert.AreEqual(expectedLengthOfList, swingDataList.Count);
+            Assert.AreEqual(expectedValueOfVariable, swingData);
 
         }
 
@@ -38,17 +38,18 @@ namespace swingDataTest
         {
             //Arrange
             RestRNGolfService.Controllers.SwingDataController swingDataController = new SwingDataController();
-            List<int> swingDataList = SwingDataController.SwingDistanceList;
-            swingDataList.Clear();
+            int swingData;
+            
 
             SwingData testSwingData = new SwingData(10.01);
             int expectedDistance = 30;
 
             //Act
             swingDataController.PostSwingDataAsDistance(testSwingData);
+            swingData = SwingDataController.FinalSwingDistance;
 
             //Assert
-            Assert.AreEqual(expectedDistance, swingDataList[0]);
+            Assert.AreEqual(expectedDistance, swingData);
         }
 
         [TestMethod]
@@ -192,7 +193,39 @@ namespace swingDataTest
         }
         #endregion
 
+        #region DatabaseMethodTests
 
+        [TestMethod]
+        public void GetPlayersFromDatabase()
+        {
+            //Arrange
+            SwingDataController swingDataController = new SwingDataController();
+            int expectedCount = 0;
+
+
+            //Act
+            List<Player> playerList = swingDataController.GetLeaderboard();
+
+            //Assert
+            Assert.AreNotEqual(expectedCount, playerList.Count);
+        }
+
+        [TestMethod]
+        public void GetSinglePlayerTest()
+        {
+            //Arrange
+            SwingDataController swingDataController = new SwingDataController();
+            Player expectedPlayer = swingDataController.GetLeaderboard()[1];
+
+            //Act
+            Player singlePlayer = swingDataController.GetSinglePlayer("bob");
+
+
+            //Assert
+            Assert.AreSame(expectedPlayer, singlePlayer);
+        }
+
+        #endregion
 
     }
 }
