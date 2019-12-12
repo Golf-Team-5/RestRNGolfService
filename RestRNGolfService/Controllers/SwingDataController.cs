@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using RestRNGolfService.Model;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using RestRNGolfService.Utility;
 
 namespace RestRNGolfService.Controllers
 {
@@ -8,6 +11,7 @@ namespace RestRNGolfService.Controllers
     [ApiController]
     public class SwingDataController : ControllerBase
     {
+        //variabel til at holde swing data fra UDPGolf og raspberry pi'en efter den er blev omdannet til afstand
 
         //liste af swing data fra UDPGolf og raspberry pi'en efter de er blev omdannet til afstand
 
@@ -15,16 +19,19 @@ namespace RestRNGolfService.Controllers
         {
             800
         };
+        public static int FinalSwingDistance;
+
 
 
         // GET: api/SwingData
         [HttpGet]
-        public IEnumerable<int> Get()
+        public int Get()
         {
 
             ScoreCalculator.NoOfSwings++;
 
-            return SwingDistanceList;
+            return FinalSwingDistance;
+            
         }
 
         // GET: api/SwingData/GetScore 
@@ -37,6 +44,25 @@ namespace RestRNGolfService.Controllers
             return scoreAndNoOfSwings;
         }
 
+        // GET: api/SwingData/GetLeaderboard
+        [HttpGet]
+        [Route("GetLeaderboard")]
+        public List<Player> GetLeaderboard()
+        {
+            List<Player> playerList = DBUtility.GetPlayersFromDatabase();
+            return playerList;
+            
+        }
+
+        // GET: api/SwingData/5
+        [HttpGet]
+        [Route("GetSinglePlayer/" + "{playerName}" )]
+        public Player GetSinglePlayer(string playerName )
+        {
+            Player singlePlayer = DBUtility.GetSinglePlayerFromDB(playerName);
+            return singlePlayer;
+        }
+
         // PUT: api/SwingData/ResetSwings
         [HttpPut]
         [Route("ResetSwings")]
@@ -45,13 +71,13 @@ namespace RestRNGolfService.Controllers
             ScoreCalculator.NoOfSwings = 0;
         }
 
-        // GET: api/SwingData/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // PUT: api/SwingData/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            return "value";
         }
 
+        
         // POST: api/SwingData
         [HttpPost]
         public void PostSwingDataAsDistance([FromBody] SwingData swingSpeed)
@@ -61,17 +87,23 @@ namespace RestRNGolfService.Controllers
 
             if (swingDistance != 0)
             {
-                SwingDistanceList.Add(swingDistance);
+                FinalSwingDistance = swingDistance;
             }
 
 
         }
 
-        // PUT: api/SwingData/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        // POST: api/SwingData/PostPlayerScore
+        [HttpPost]
+        [Route("PostPlayerScore")]
+        public void PostPlayerScore([FromBody] Player player)
         {
+
+            DBUtility.PostPlayerToDB(player);
+
         }
+
+        
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
