@@ -13,8 +13,14 @@ namespace RestRNGolfService.Controllers
     {
         //variabel til at holde swing data fra UDPGolf og raspberry pi'en efter den er blev omdannet til afstand
 
+        //liste af swing data fra UDPGolf og raspberry pi'en efter de er blev omdannet til afstand
+
+        public static List<int> SwingDistanceList = new List<int>
+        {
+            800
+        };
         public static int FinalSwingDistance;
-        
+
 
 
         // GET: api/SwingData
@@ -31,10 +37,10 @@ namespace RestRNGolfService.Controllers
         // GET: api/SwingData/GetScore 
         [HttpGet]
         [Route("GetScore")]
-        public int[] GetScore(int par)
+        public int GetScore(int par, int hits)
         {
-            ScoreCalculator.CalculateScore(par);
-            int[] scoreAndNoOfSwings = new[] { ScoreCalculator.Score, ScoreCalculator.NoOfSwings };
+            ScoreCalculator.CalculateScore(par, hits);
+            int scoreAndNoOfSwings = ScoreCalculator.Score;
             return scoreAndNoOfSwings;
         }
 

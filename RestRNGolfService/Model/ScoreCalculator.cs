@@ -24,19 +24,19 @@ namespace RestRNGolfService.Model
         /// </summary>
         /// <param name="par"></param>
         /// <returns></returns>
-        public static int CalculateScore(int par)
+        public static int CalculateScore(int par, int hits)
         {
-            if (NoOfSwings == 1)
+            if (hits == 1)
             {
                 return Score += 2000;
             }
-            if (NoOfSwings <= par)
+            if (hits <= par)
             {
                 return Score += 1000;
             }
-            if (NoOfSwings <= 10 && NoOfSwings > par)
+            if (hits <= 10 && hits > par)
             {
-                return Score += 1000 - (100 * NoOfSwings);
+                return Score += 1000 - (100 * hits);
             }
             return Score += 0;
             
