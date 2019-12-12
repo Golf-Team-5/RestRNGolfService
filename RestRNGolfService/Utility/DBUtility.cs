@@ -17,7 +17,7 @@ namespace RestRNGolfService.Utility
         #region Database Connection
 
         private const string connectionString = "Server = tcp:golfserver.database.windows.net,1433; Initial Catalog = RNGolfDB; Persist Security Info=False; User ID = GolfMaster; Password=HoleInOne!; MultipleActiveResultSets=False; Encrypt=True; TrustServerCertificate=False; Connection Timeout = 30;";
-        private const string GET_ALL = "Select * From Player";
+        private const string GET_ALL = "Select * From Player ORDER BY PlayerScore DESC";
         
 
         /// <summary>
@@ -60,8 +60,12 @@ namespace RestRNGolfService.Utility
                     
                     command.CommandText = "Select * From Player WHERE Player.PlayerName = @playerName";
                     command.Parameters.AddWithValue("@playerName", playerName);
-                    var playerId = command.ExecuteScalar();
-                    //TODO method returns ID not player object
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    Player player = NextPlayer(reader);
+                    reader.Close();
+                    return player;
+
 
                 }
             }
@@ -82,6 +86,10 @@ namespace RestRNGolfService.Utility
             return player;
         }
 
+        /// <summary>
+        /// This method posts a player object to the database.
+        /// </summary>
+        /// <param name="player"></param>
         public static void PostPlayerToDB(Player player)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -100,6 +108,29 @@ namespace RestRNGolfService.Utility
                 }
             }
         }
+
+        /// <summary>
+        /// This method deletes a Player object from the database, using a specified ID
+        /// </summary>
+        /// <param name="id"></param>
+        public static void DeletePlayerFromDatabase(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                if (conn.State == ConnectionState.Open)
+                {
+                    using (SqlCommand command = conn.CreateCommand())
+                    {
+                        command.CommandText = "delete from Player where PlayerId = @ID";
+                        command.Parameters.AddWithValue("@ID", id);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+
+
 
 
         #endregion
