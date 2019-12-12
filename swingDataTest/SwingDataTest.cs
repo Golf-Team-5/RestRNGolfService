@@ -177,20 +177,7 @@ namespace swingDataTest
             ScoreCalculator.NoOfSwings = 0;
         }
 
-        [TestMethod]
-        public void ResetSwingsTest()
-        {
-            //Arrange
-            SwingDataController swingDataController = new SwingDataController();
-            int expectedNoOfSwings = 0;
-            ScoreCalculator.NoOfSwings = 5;
-
-            //Act
-            swingDataController.ResetSwings();
-
-            //Assert
-            Assert.AreEqual(expectedNoOfSwings, ScoreCalculator.NoOfSwings);
-        }
+        
         #endregion
 
         #region DatabaseMethodTests
@@ -215,14 +202,56 @@ namespace swingDataTest
         {
             //Arrange
             SwingDataController swingDataController = new SwingDataController();
-            Player expectedPlayer = swingDataController.GetLeaderboard()[1];
+            Player expectedPlayer = swingDataController.GetLeaderboard()[0];
 
             //Act
-            Player singlePlayer = swingDataController.GetSinglePlayer("bob");
+            Player singlePlayer = swingDataController.GetSinglePlayer("Kri");
 
 
             //Assert
-            Assert.AreSame(expectedPlayer, singlePlayer);
+            Assert.AreEqual(expectedPlayer.PlayerId, singlePlayer.PlayerId);
+        }
+
+        [TestMethod]
+        public void PostPlayerToDatabaseTest()
+        {
+            //Arrange
+            SwingDataController swingDataController = new SwingDataController();
+            Player playerToBePosted = new Player("Kia", 8, 3500);
+
+
+            //Act
+            swingDataController.PostPlayerScore(playerToBePosted);
+            Player expectedPlayerFromDatabase = swingDataController.GetSinglePlayer("Kia");
+
+            //Assert
+            Assert.AreEqual(playerToBePosted.PlayerName, expectedPlayerFromDatabase.PlayerName);
+
+        }
+
+        [TestMethod]
+        public void DeletePlayerFromDatabaseTest()
+        {
+            //Arrange
+            SwingDataController swingDataController = new SwingDataController();
+
+
+            //Act
+            Player playerToBeDeleted = swingDataController.GetSinglePlayer("Kia");
+            swingDataController.DeletePlayerFromDB(playerToBeDeleted.PlayerId);
+            Player playerShouldNotExist = swingDataController.GetSinglePlayer(playerToBeDeleted.PlayerName);
+
+            //Assert
+            try
+            {
+                Assert.AreEqual(playerToBeDeleted.PlayerId, playerShouldNotExist.PlayerId);
+                Assert.Fail();
+            }
+            catch (Exception e)
+            {
+                
+            }
+            
         }
 
         #endregion

@@ -63,14 +63,7 @@ namespace RestRNGolfService.Controllers
             return singlePlayer;
         }
 
-        // PUT: api/SwingData/ResetSwings
-        [HttpPut]
-        [Route("ResetSwings")]
-        public void ResetSwings()
-        {
-            ScoreCalculator.NoOfSwings = 0;
-        }
-
+       
         // PUT: api/SwingData/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
@@ -106,9 +99,11 @@ namespace RestRNGolfService.Controllers
         
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("{id}")]
+        public void DeletePlayerFromDB(int id)
         {
+            DBUtility.DeletePlayerFromDatabase(id);
         }
     }
 }
