@@ -107,12 +107,12 @@ namespace swingDataTest
         {
             //Arrange
             SwingDataController swingDataController = new SwingDataController();
-            ScoreCalculator.NoOfSwings = 4;
+            int NoOfSwings = 4;
         
             int expectedScore = 600;
 
             //Act 
-            swingDataController.GetScore(3);
+            swingDataController.GetScore(3, NoOfSwings);
 
             //Assert
             Assert.AreEqual(expectedScore, ScoreCalculator.Score);
@@ -126,12 +126,12 @@ namespace swingDataTest
         {
             //Arrange
             SwingDataController swingDataController = new SwingDataController();
-            ScoreCalculator.NoOfSwings = 1;
+            int NoOfSwings = 1;
 
             int expectedScore = 2000;
 
             //Act 
-            swingDataController.GetScore(3);
+            swingDataController.GetScore(3, NoOfSwings);
 
 
             //Assert
@@ -145,12 +145,12 @@ namespace swingDataTest
         {
             //Arrange
             SwingDataController swingDataController = new SwingDataController();
-            ScoreCalculator.NoOfSwings = 3;
+            int NoOfSwings = 3;
 
             int expectedScore = 1000;
 
             //Act 
-            swingDataController.GetScore(4);
+            swingDataController.GetScore(4, NoOfSwings);
 
             //Assert
             Assert.AreEqual(expectedScore, ScoreCalculator.Score);
@@ -163,12 +163,12 @@ namespace swingDataTest
         {
             //Arrange
             SwingDataController swingDataController = new SwingDataController();
-            ScoreCalculator.NoOfSwings = 14;
+            int NoOfSwings = 14;
 
             int expectedScore = 0;
 
             //Act 
-            swingDataController.GetScore(5);
+            swingDataController.GetScore(5, NoOfSwings);
 
 
             //Assert
