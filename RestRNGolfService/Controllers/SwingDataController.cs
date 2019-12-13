@@ -19,7 +19,7 @@ namespace RestRNGolfService.Controllers
         {
             800
         };
-        public static int FinalSwingDistance;
+        public static int FinalSwingDistance = 800;
 
 
 
