@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RestRNGolfService.Model;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using RestRNGolfService.Utility;
 
 namespace RestRNGolfService.Controllers
@@ -44,13 +45,17 @@ namespace RestRNGolfService.Controllers
             return scoreAndNoOfSwings;
         }
 
+
+
         // GET: api/SwingData/GetLeaderboard
         [HttpGet]
         [Route("GetLeaderboard")]
-        public List<Player> GetLeaderboard()
+        public IEnumerable<Player> GetLeaderboard()
         {
-            List<Player> playerList = DBUtility.GetPlayersFromDatabase();
-            return playerList;
+            IEnumerable<Player> playerList = DBUtility.GetPlayersFromDatabase();
+
+            
+            return playerList.OrderByDescending(i => i.PlayerScore);
             
         }
 
