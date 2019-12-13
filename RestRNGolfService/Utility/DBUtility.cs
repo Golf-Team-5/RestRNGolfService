@@ -17,7 +17,7 @@ namespace RestRNGolfService.Utility
         #region Database Connection
 
         private const string connectionString = "Server = tcp:golfserver.database.windows.net,1433; Initial Catalog = RNGolfDB; Persist Security Info=False; User ID = GolfMaster; Password=HoleInOne!; MultipleActiveResultSets=False; Encrypt=True; TrustServerCertificate=False; Connection Timeout = 30;";
-        private const string GET_ALL = "Select * From Player ORDER BY PlayerScore ASC";
+        private const string GET_ALL = "Select * From Player ORDER BY PlayerScore DESC";
         
 
         /// <summary>
