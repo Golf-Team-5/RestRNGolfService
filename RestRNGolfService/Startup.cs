@@ -35,6 +35,8 @@ namespace RestRNGolfService
             app.UseCors(
                 options =>
                 {
+
+                    
                     options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); // allow everything from anywhere    
                 });
 

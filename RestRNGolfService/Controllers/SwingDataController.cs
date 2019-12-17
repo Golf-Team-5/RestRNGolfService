@@ -16,11 +16,8 @@ namespace RestRNGolfService.Controllers
 
         //liste af swing data fra UDPGolf og raspberry pi'en efter de er blev omdannet til afstand
 
-        public static List<int> SwingDistanceList = new List<int>
-        {
-            800
-        };
-        public static int FinalSwingDistance = 800;
+        
+        public static int FinalSwingDistance;
 
 
 
