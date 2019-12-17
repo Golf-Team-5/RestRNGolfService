@@ -241,6 +241,8 @@ namespace swingDataTest
             swingDataController.DeletePlayerFromDB(playerToBeDeleted.PlayerId);
             Player playerShouldNotExist = swingDataController.GetSinglePlayer(playerToBeDeleted.PlayerName);
 
+            
+
             //Assert
             try
             {

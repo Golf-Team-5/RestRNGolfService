@@ -22,7 +22,8 @@ namespace RestRNGolfService.Model
         /// This method calculates the score of a course using number of swings and the set par value.
         /// It also prevents subtracting points from the score. 
         /// </summary>
-        /// <param name="par"></param>
+        /// <param name="par"/>
+        /// <param name="hits"/>
         /// <returns></returns>
         public static int CalculateScore(int par, int hits)
         {
